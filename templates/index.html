@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Image Fetcher</title>
+        <style>
+            .fetched-img {
+                display: block;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div>
+                <label for="url">Enter a URL</label>
+                <input type="text" id="url" data-bind="value: url"/>
+                <input type="button" data-bind="click: fetchImages" value="Fetch!"/>
+            </div>
+            <div>
+                <!-- ko foreach: imgUrls() -->
+                <div class="fetched-img">
+                    <div>
+                        <img data-bind="attr: { src: $data }"/>
+                    </div>
+                </div>
+                <!-- /ko -->
+            </div>
+        </div>
+        <script src="/static/jquery-3.2.1.min.js"></script>
+        <script src="/static/knockout.js"></script>
+        <script src="/static/index.js"></script>
+    </body>
+</html>
