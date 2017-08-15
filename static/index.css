@@ -1,0 +1,16 @@
+body {
+    width: 100%;
+    height: 100%;
+}
+
+#container {
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: center;
+}
+
+.fetched-img {
+    display: block;
+    margin: 5px;
+}

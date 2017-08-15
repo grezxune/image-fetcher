@@ -2,18 +2,19 @@
 <html>
     <head>
         <title>Image Fetcher</title>
-        <style>
-            .fetched-img {
-                display: block;
-            }
-        </style>
+        <link rel="stylesheet" href="/static/index.css"/>
     </head>
     <body>
         <div id="container">
             <div>
+                <p>
+                    Enter a url and hit enter or the "Fetch!" button. Allow up to 10 seconds for images to load before trying again.
+                </p>
+            </div>
+            <div>
                 <label for="url">Enter a URL</label>
                 <input type="text" id="url" data-bind="value: url"/>
-                <input type="button" data-bind="click: fetchImages" value="Fetch!"/>
+                <input type="button" id="fetch-btn" data-bind="click: fetchImages" value="Fetch!"/>
             </div>
             <div>
                 <!-- ko foreach: imgUrls() -->
