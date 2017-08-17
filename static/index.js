@@ -21,6 +21,7 @@ ajax = {
             success: function (response) {
                 viewModel.imgUrls(response);
                 viewModel.isBusy(false);
+                $('#url').focus();
             },
             error: function (response) {
                 alert('Something went wrong, please try again');
