@@ -4,6 +4,7 @@ html, body {
     font-family: sans-serif;
     margin: 0px;
     background: #DFDCE3;
+    text-align: center;
 }
 
 .container {
@@ -36,7 +37,6 @@ html, body {
 
 .header-info {
     margin: 10px;
-    text-align: center;
 }
 
 .header-info span {

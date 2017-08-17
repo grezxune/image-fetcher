@@ -71,6 +71,7 @@ def get_image_urls(url):
     for img in soup.find_all('img'):
         if(img is not None):
             img_src = img.get('src')
+            print(img_src)
             if(img_src is not None):
                 if(img_src.startswith('//')):
                     urls.append(img_src[2:])
