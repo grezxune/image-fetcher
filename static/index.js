@@ -3,16 +3,6 @@ function ViewModel() {
     self.url = ko.observable();
     self.imgUrls = ko.observableArray([]);
     self.isBusy = ko.observable(false);
-
-    self.busyIndicationStatus = ko.computed(function() {
-        if(self.isBusy()) {
-            $('#url').attr('disabled', 'disabled');
-            $('#fetch-btn').attr('disabled', 'disabled');
-        } else {
-            $('#url').removeAttr('disabled');
-            $('#fetch-btn').removeAttr('disabled');
-        }
-    });
 };
 
 function fetchImages() {
@@ -48,6 +38,8 @@ $(document).ready(function() {
             event.preventDefault();
         }
     });
+
+    $('#url').focus();
 });
 
 var viewModel = new ViewModel();
