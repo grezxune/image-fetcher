@@ -1,9 +1,8 @@
 from flask import Flask, jsonify, render_template, request
 from bs4 import BeautifulSoup
-from urlparse import urljoin
+from urllib.parse import urljoin
 import requests
-import httplib
-import urllib2
+import http.client as httplib
 import urllib
 import time
 import os
@@ -23,6 +22,7 @@ def fetch_images():
     # Prepend base_url with http:// or http://www. if missing from user
     base_url = decorate_url_with_protocol(base_url)
 
+    print(base_url)
     # Get full urls & if hotlinking is possible or not
     urls_and_hotlink = get_image_urls(base_url)
     urls = urls_and_hotlink['urls']
@@ -54,11 +54,11 @@ def get_image_urls(url):
 
     # Grab html from url - Headers set to avoid hotlink protection
     try:
-        req = urllib2.Request(url)
-        html_doc = urllib2.urlopen(req)
+        req = urllib.request.Request(url)
+        html_doc = urllib.request.urlopen(req)
     except:
-        req = urllib2.Request(url, headers={'User-Agent': 'Magic Browser'})
-        html_doc = urllib2.urlopen(req)
+        req = urllib.request.Request(url, headers={'User-Agent': 'Magic Browser'})
+        html_doc = urllib.request.urlopen(req)
         hotlink = False
 
 
@@ -100,14 +100,14 @@ def get_final_urls(urls, hotlink):
 
             if(hotlink):
                 try:
-                    img_req = urllib2.Request(full_url)
-                    urllib2.urlopen(img_req)
+                    img_req = urllib.request.Request(full_url)
+                    urllib.request.urlopen(img_req)
                     final_urls.append(full_url)
                 except:
-                    urllib.urlretrieve(full_url, local_url)
+                    urllib.request.urlretrieve(full_url, local_url)
                     final_urls.append(local_url)
             else:
-                urllib.urlretrieve(full_url, local_url)
+                urllib.request.urlretrieve(full_url, local_url)
                 final_urls.append(local_url)
         except Exception as e:
             print('failed to download ' + full_url)
